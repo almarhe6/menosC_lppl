@@ -3,6 +3,11 @@
     #include "header.h"
 %}
 
+%union{
+	int cent;
+	char *ident;
+}
+
     %token ID_ CTE_ TRUE_ FALSE_ INT_ BOOL_ RETURN_ READ_
     %token PRINT_ IF_ ELSE_ FOR_ AND_ OR_ IGUAL_ DISTINTO_ MAYOR_
     %token MENOR_ MAYORIGUAL_ MENORIGUAL_ MAS_ MENOS_ POR_ DIV_
