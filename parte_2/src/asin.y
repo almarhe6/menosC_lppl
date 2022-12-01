@@ -8,15 +8,18 @@
 	char *ident;
 }
 
-    %token ID_ CTE_ TRUE_ FALSE_ INT_ BOOL_ RETURN_ READ_
+    %token TRUE_ FALSE_ INT_ BOOL_ RETURN_ READ_
     %token PRINT_ IF_ ELSE_ FOR_ AND_ OR_ IGUAL_ DISTINTO_ MAYOR_
     %token MENOR_ MAYORIGUAL_ MENORIGUAL_ MAS_ MENOS_ POR_ DIV_
     %token OPAR_ CPAR_ NEGACION_ PUNTOYCOMA_ COMA_ OKEY_ CKEY_
     %token ASIGNACION_ OCOR_ CCOR_
 
+    %token <cent> CTE_
+    %token <ident> ID_
 %%
 
-programa: listDecla
+programa:{dvar=0;niv=0;cargaContexto(niv);} 
+	listDecla
 	;
 
 listDecla: decla 
@@ -27,7 +30,7 @@ decla: declaVar
      | declaFunc
      ;
 
-declaVar: tipoSimp ID_ PUNTOYCOMA_ 
+declaVar: tipoSimp ID_ PUNTOYCOMA_  
 	| tipoSimp ID_ ASIGNACION_ const PUNTOYCOMA_
 	| tipoSimp ID_ OCOR_ CTE_ CCOR_ PUNTOYCOMA_
 	;

@@ -53,7 +53,7 @@ comentario "//".*
 "[" {retornar(OCOR_);}
 "]" {retornar(CCOR_);}
 
-{identificador} {yyval.cent=yytext; retornar(ID_);}
+{identificador} {yyval.cent=strdup(yytext); retornar(ID_);}
 {constante} {yyval.ident=atoi(yytext); retornar(CTE_);}
 {delimitador} {if(verbosidad) ECHO;}
 {comentario} {if(verbosidad) ECHO;}
