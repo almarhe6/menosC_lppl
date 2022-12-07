@@ -19,42 +19,79 @@
 %%
 
 programa:{dvar=0;niv=0;cargaContexto(niv);} 
-	listDecla
+	listDecla { if (obtTdS("main").t==T_ERROR) yyerror("Falta el main"); if (verTdS) mostrarTds(); }
 	;
 
-listDecla: decla 
-	 | listDecla decla
+listDecla: decla { $$ = $1; }
+	 | listDecla decla { $$ = $1 + $2; }
 	 ;
 
-decla: declaVar
-     | declaFunc
+decla: declaVar { $$ = 0; }
+     | declaFunc { $$ = $1; }
      ;
 
 declaVar: tipoSimp ID_ PUNTOYCOMA_  
+	{
+		if (!insTdS($2, VARIABLE, $1, niv, dvar, -1)){
+			yyerror("Variable ya declarada!");}
+		else {
+			dvar += TALLA_TIPO_SIMPLE;}
+		if (verTds) mostrarTdS();
+	}
 	| tipoSimp ID_ ASIGNACION_ const PUNTOYCOMA_
+		
 	| tipoSimp ID_ OCOR_ CTE_ CCOR_ PUNTOYCOMA_
 	;
 
-const: CTE_
-     | TRUE_
-     | FALSE_
+const: CTE_ { $$ = T_ENTERO; }
+     | TRUE_ { $$ = T_LOGICO; }
+     | FALSE_ { $$ = T_LOGICO; }
      ;
 
-tipoSimp: INT_
-	| BOOL_
+tipoSimp: INT_ { $$ = T_ENTERO; }
+	| BOOL_ { $$ = T_LOGICO; }
 	;
 
-declaFunc: tipoSimp ID_ OPAR_ paramForm CPAR_ bloque;
+declaFunc: tipoSimp ID_ { niv = 1; cargoContexto(niv); } 
 
-paramForm: listParamForm
-	 |
+	  OPAR_ paramForm CPAR_ 
+	  { if(!insTdS($2,FUNCION,$1,niv-1,dvar,$5)) yyerror("Función ya declarada");}
+
+	  bloque
+	  {
+	  if (verTdS) mostrarTdS();
+          descargaCOntexto(niv);
+          niv = 0;
+	  }
+	  ;
+
+
+paramForm: listParamForm { $$ = $1; }
+	 | { $$ = insTdD(-1, T_VACIO); }
 	 ;
 
-listParamForm: tipoSimp ID_
-	     | tipoSimp ID_ COMA_ listParamForm
+listParamForm: tipoSimp ID_ {
+		$$ = insTdD(-1, $1);
+		
+		if (!insTdS($2, PARAMETRO, $1, niv, dvar, -1)){
+		   yyerror("Parametro repetido");}
+		else { dvar += TALLA_TIPO_SIMPLE; }
+		if (verTdS) {mostrarTdS;};
+		
+		}
+	     | tipoSimp ID_ COMA_ listParamForm {
+		$$ = insTdD($4, $1);
+		if (!insTdS($2, PARAMETRO, $1, niv, dvar, -1)){
+			yyerror("Parametro repetido");}
+		else { dvar += TALLA_TIPO_SIMPLE; }
+		if (verTdS mostrarTdS();
+	     }
 	     ;
 
-bloque: OKEY_ declaVarLocal listInst RETURN_ expre PUNTOYCOMA_ CKEY_ ;
+bloque: OKEY_ declaVarLocal listInst RETURN_ expre PUNTOYCOMA_ CKEY_ 
+	{if(obtTdD(-1).tipo == T_ERROR){yyerror("Return fuera de función")}
+	else if(obtTdD(-1).tipo != $5) yyerror("La funcion no deberia devolver ese tipo");}
+;
 
 declaVarLocal: declaVarLocal declaVar
 	     |
@@ -117,32 +154,40 @@ expreSufi: const
 	 | ID_ OCOR_ expre CCOR_
 	 | ID_ OPAR_ paramAct CPAR_;
 
-paramAct: listParamAct
-	|;
+paramAct: { $$ = insTdD(-1, T_VACIO); }
+	| listParamAct { $$ = $1;}
+	;
 
-listParamAct: expre
-	    | expre COMA_ listParamAct;
+listParamAct: expre { $$ = insTdD(-1, $1); }
+	    | expre COMA_ listParamAct { $$ = insTdD = insTdD($3, $1);}
+	    ;
 
-opLogic: AND_ 
-       | OR_;
+opLogic: AND_ { $$ = AND; } 
+       | OR_ { $$ = OR; }
+       ;
 
-opIgual: IGUAL_
-       | DISTINTO_;
+opIgual: IGUAL_ { $$ = IGUAL;}
+       | DISTINTO_ { $$ = DISTINTO;}
+       ; 
 
-opRel: MAYOR_
-     | MENOR_
-     | MAYORIGUAL_
-     | MENORIGUAL_;
+opRel: MAYOR_ { $$ = MAYOR; }
+     | MENOR_ { $$ = MENOR; }
+     | MAYORIGUAL_ { $$ = MAYORIGUAL; }
+     | MENORIGUAL_ { $$ = MENORIGUAL; }
+     ;
 
-opAd: MAS_
-    | MENOS_;
+opAd: MAS_ { $$ = MAS; }
+    | MENOS_ { $$ = MENOS; }
+    ;
 
-opMul: POR_
-     | DIV_;
+opMul: POR_ { $$ = POR; }
+     | DIV_ { $$ = DIV; }
+     ;
 
-opUna: MAS_
-     | MENOS_
-     | NEGACION_;	
+opUna: MAS_ { $$ = MAS; }
+     | MENOS_ { $$ = MENOS; }
+     | NEGACION_ { $$ = NEGACION; }
+     ;	
 
 %%
 
