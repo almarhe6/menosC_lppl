@@ -100,8 +100,10 @@ union YYSTYPE
 
 	int cent;
 	char *ident;
+	int expr;
+	int referencia;
 
-#line 105 "asin.h"
+#line 107 "asin.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

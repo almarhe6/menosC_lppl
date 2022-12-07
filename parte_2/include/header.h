@@ -29,5 +29,20 @@ extern int dvar;
 extern int niv;
 extern int verTDS;
 
+#define NEGACION 0
+#define MAS 1
+#define MENOS 2
+#define POR 3
+#define DIV 4
+#define IGUAL 5
+#define DISTINTO 6
+#define OR 7
+#define AND 8
+#define MAYOR 9
+#define MENOR 10
+#define MAYORIGUAL 11
+#define MENORIGUAL 12
+
+
 #endif  /* _HEADER_H */
 /*****************************************************************************/

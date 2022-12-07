@@ -521,10 +521,9 @@ char *yytext;
 #include "header.h"
 #include "asin.h"
 #define retornar(x) {if (verbosidad) ECHO; return x;}
-int TALLA_TIPO_SIMPLE=1;
-#line 526 "alex.c"
+#line 525 "alex.c"
 #define YY_NO_INPUT 1
-#line 528 "alex.c"
+#line 527 "alex.c"
 
 #define INITIAL 0
 
@@ -739,9 +738,9 @@ YY_DECL
 		}
 
 	{
-#line 23 "src/alex.l"
+#line 22 "src/alex.l"
 
-#line 745 "alex.c"
+#line 744 "alex.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -810,196 +809,196 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 24 "src/alex.l"
+#line 23 "src/alex.l"
 {retornar(TRUE_);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 25 "src/alex.l"
+#line 24 "src/alex.l"
 {retornar(FALSE_);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 26 "src/alex.l"
+#line 25 "src/alex.l"
 {retornar(INT_);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 27 "src/alex.l"
+#line 26 "src/alex.l"
 {retornar(BOOL_);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 28 "src/alex.l"
+#line 27 "src/alex.l"
 {retornar(RETURN_);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 29 "src/alex.l"
+#line 28 "src/alex.l"
 {retornar(READ_);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 30 "src/alex.l"
+#line 29 "src/alex.l"
 {retornar(PRINT_);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 31 "src/alex.l"
+#line 30 "src/alex.l"
 {retornar(IF_);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 32 "src/alex.l"
+#line 31 "src/alex.l"
 {retornar(ELSE_);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 33 "src/alex.l"
+#line 32 "src/alex.l"
 {retornar(FOR_);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 34 "src/alex.l"
+#line 33 "src/alex.l"
 {retornar(AND_);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 35 "src/alex.l"
+#line 34 "src/alex.l"
 {retornar(OR_);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 36 "src/alex.l"
+#line 35 "src/alex.l"
 {retornar(IGUAL_);} 
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 37 "src/alex.l"
+#line 36 "src/alex.l"
 {retornar(DISTINTO_);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 38 "src/alex.l"
+#line 37 "src/alex.l"
 {retornar(MAYOR_);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 39 "src/alex.l"
+#line 38 "src/alex.l"
 {retornar(MENOR_);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 40 "src/alex.l"
+#line 39 "src/alex.l"
 {retornar(MAYORIGUAL_);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 41 "src/alex.l"
+#line 40 "src/alex.l"
 {retornar(MENORIGUAL_);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 42 "src/alex.l"
+#line 41 "src/alex.l"
 {retornar(MAS_);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 43 "src/alex.l"
+#line 42 "src/alex.l"
 {retornar(MENOS_);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 44 "src/alex.l"
+#line 43 "src/alex.l"
 {retornar(POR_);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 45 "src/alex.l"
+#line 44 "src/alex.l"
 {retornar(DIV_);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 46 "src/alex.l"
+#line 45 "src/alex.l"
 {retornar(OPAR_);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 47 "src/alex.l"
+#line 46 "src/alex.l"
 {retornar(CPAR_);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 48 "src/alex.l"
+#line 47 "src/alex.l"
 {retornar(NEGACION_);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 49 "src/alex.l"
+#line 48 "src/alex.l"
 {retornar(PUNTOYCOMA_);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 50 "src/alex.l"
+#line 49 "src/alex.l"
 {retornar(COMA_);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 51 "src/alex.l"
+#line 50 "src/alex.l"
 {retornar(OKEY_);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 52 "src/alex.l"
+#line 51 "src/alex.l"
 {retornar(CKEY_);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 53 "src/alex.l"
+#line 52 "src/alex.l"
 {retornar(ASIGNACION_);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 54 "src/alex.l"
+#line 53 "src/alex.l"
 {retornar(OCOR_);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 55 "src/alex.l"
+#line 54 "src/alex.l"
 {retornar(CCOR_);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 57 "src/alex.l"
-{yyval.cent=yytext; retornar(ID_);}
+#line 56 "src/alex.l"
+{yyval.cent=strdup(yytext); retornar(ID_);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 58 "src/alex.l"
+#line 57 "src/alex.l"
 {yyval.ident=atoi(yytext); retornar(CTE_);}
 	YY_BREAK
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 59 "src/alex.l"
+#line 58 "src/alex.l"
 {if(verbosidad) ECHO;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 60 "src/alex.l"
+#line 59 "src/alex.l"
 {if(verbosidad) ECHO;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 62 "src/alex.l"
+#line 61 "src/alex.l"
 {yyerror("Caracter desconocido");}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 63 "src/alex.l"
+#line 62 "src/alex.l"
 ECHO;
 	YY_BREAK
-#line 1003 "alex.c"
+#line 1002 "alex.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1975,6 +1974,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 63 "src/alex.l"
+#line 62 "src/alex.l"
 
 
